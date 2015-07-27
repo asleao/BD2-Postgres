@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 import org.springframework.transaction.annotation.Transactional;
+import sr.ifes.edu.br.bd2.CategoriaService;
 import sr.ifes.edu.br.bd2.FilmeService;
 import sr.ifes.edu.br.bd2.domain.Categoria;
 import sr.ifes.edu.br.bd2.domain.Filme;
@@ -26,6 +27,9 @@ public class FilmeServiceTest extends AbstractionTest{
 
 	@Autowired
 	private FilmeService filmeService;
+        
+        @Autowired
+	private CategoriaService categoriaService;
         
         @Autowired
         private FilmeData filmeData;
@@ -48,7 +52,8 @@ public class FilmeServiceTest extends AbstractionTest{
             f.setNome("Divertidamente");
             f.setPreco(21.0);
             Categoria c = new Categoria("Animação", 8.0);
-            f.setCategoria(c);
+            c = categoriaService.criar(c);
+            f.setCategoria(c);            
             filmeService.criar(f);
             long records = filmeService.getQuantidadeFilmes();
             assertNotNull(records);
