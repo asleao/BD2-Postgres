@@ -39,14 +39,14 @@ public abstract class Model implements Serializable {
 		this.id = id;
 	}	
 	
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Model) {
-        	Model o = (Model) obj;
-            if (this.id != null && this.id == o.id) {
-                return true;
+        @Override
+        public boolean equals(Object obj) {
+            if (obj instanceof Model) {
+                    Model o = (Model) obj;
+                if (this.id != null && this.id == o.id) {
+                    return true;
+                }
             }
+            return false;
         }
-        return false;
-    }
 }

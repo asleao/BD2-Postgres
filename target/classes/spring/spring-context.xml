@@ -13,9 +13,9 @@
 
 
     <!-- HIBERNATE CONFIG -->
-    <import resource="classpath:spring-hibernate.xml"/>
+    <import resource="spring-hibernate.xml"/>
 
     <!-- Shared Config -->
-    <import resource="classpath:spring-shared-context.xml"/>
+    <import resource="spring-shared-context.xml"/>
     
 </beans>

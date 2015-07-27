@@ -11,9 +11,11 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>		
-		<spring.version>4.0.7.RELEASE</spring.version>
-		<slf4j.version>1.7.5</slf4j.version>        
+		<spring.version>3.2.2.RELEASE</spring.version>
+                <hibernate.version>4.1.9.Final</hibernate.version>
+		<slf4j.version>1.6.1</slf4j.version>
                 <junit.version>4.11</junit.version>
+                <aspectj.version>1.6.9</aspectj.version>
 	</properties>
 
 	
@@ -33,14 +35,36 @@
             <version>1.14.4</version>
             <scope>provided</scope>
         </dependency>
+        <!-- PostgreSQL Driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4-1200-jdbc41</version>
+        </dependency>
        
         <!-- Hibernate implementation of the JSR-303 Bean Validation Spec API.
             (SDN makes use of the javax.validation:validation-api dependency and
             hibernate provides a concrete implementation -->
+        <!-- Hibernate -->
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>5.1.1.Final</version>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+
+        </dependency>
+
+        <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-ehcache</artifactId>
+                <version>${hibernate.version}</version>
+
+        </dependency>
+
+        <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${hibernate.version}</version>
+                <scope>runtime</scope>
         </dependency>
 
         <!-- Logging Related dependencies -->
@@ -150,6 +174,37 @@
 	  <version>1.0.0.Final</version>
 	  <type>jar</type>
 	 </dependency>
+         
+         <!-- Aspect J -->
+
+        <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectj.version}</version>
+
+        </dependency>
+
+        <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+
+        </dependency>
+
+
+        <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>1.2.2</version>
+
+        </dependency>
+
+        <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>2.2</version>
+
+        </dependency>
 	</dependencies>
 
 	<build>
