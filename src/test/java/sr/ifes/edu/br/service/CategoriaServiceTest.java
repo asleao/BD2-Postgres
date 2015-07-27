@@ -6,19 +6,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.BeforeTransaction;
-import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.*;
-import org.junit.Before;
+import org.springframework.transaction.annotation.Transactional;
 import sr.ifes.edu.br.bd2.CategoriaService;
 import sr.ifes.edu.br.bd2.domain.Categoria;
 import sr.ifes.edu.br.bd2.util.datafactory.CategoriaData;
 
-@ContextConfiguration(locations = "classpath:/spring/application-context.xml")
+@ContextConfiguration(locations = "classpath:/spring/spring-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 public class CategoriaServiceTest extends AbstractionTest{
@@ -29,19 +26,8 @@ public class CategoriaServiceTest extends AbstractionTest{
         @Autowired
         private CategoriaData categoriaData;
 	
-	@Autowired
-	private Neo4jTemplate template;
-	
-	@Rollback(false)
-	@BeforeTransaction
-        @Before
-	public void cleanUpGraph() {
-            Neo4jHelper.cleanDb(template);
-	}
-	
 	@Test
         public void shouldHaveZeroRecords(){
-            cleanUpGraph();
             long records = categoriaService.getQuantidadeCategorias();
             assertNotNull(records);
             assertEquals(records, 0);

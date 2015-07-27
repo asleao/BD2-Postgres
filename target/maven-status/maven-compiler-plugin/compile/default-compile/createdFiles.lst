@@ -1,6 +1,7 @@
-sr/ifes/edu/br/bd2/repositories/FilmeRepository.class
 sr/ifes/edu/br/bd2/util/datafactory/CategoriaData.class
+sr/ifes/edu/br/bd2/repositories/FilmeRepository.class
 sr/ifes/edu/br/bd2/domain/Locacao.class
+sr/ifes/edu/br/bd2/domain/Model.class
 sr/ifes/edu/br/bd2/FilmeService.class
 sr/ifes/edu/br/bd2/util/datafactory/FilmeData.class
 sr/ifes/edu/br/bd2/ClienteService.class
@@ -8,8 +9,8 @@ sr/ifes/edu/br/bd2/domain/Sexo.class
 sr/ifes/edu/br/bd2/domain/Categoria.class
 sr/ifes/edu/br/bd2/domain/Cliente.class
 sr/ifes/edu/br/bd2/repositories/CategoriaRepository.class
-sr/ifes/edu/br/bd2/domain/Filme.class
 sr/ifes/edu/br/bd2/CategoriaService.class
+sr/ifes/edu/br/bd2/domain/Filme.class
 sr/ifes/edu/br/bd2/LocacaoService.class
 sr/ifes/edu/br/bd2/util/datafactory/ClienteData.class
 sr/ifes/edu/br/bd2/repositories/ClienteRepository.class
