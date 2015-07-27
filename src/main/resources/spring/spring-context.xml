@@ -18,4 +18,6 @@
     <!-- Shared Config -->
     <import resource="spring-shared-context.xml"/>
     
+    <context:component-scan base-package="sr.ifes.edu.br.bd2" />
+    
 </beans>

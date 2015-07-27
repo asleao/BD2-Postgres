@@ -10,6 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.*;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 import org.springframework.transaction.annotation.Transactional;
 import sr.ifes.edu.br.bd2.CategoriaService;
 import sr.ifes.edu.br.bd2.domain.Categoria;
@@ -17,6 +19,7 @@ import sr.ifes.edu.br.bd2.util.datafactory.CategoriaData;
 
 @ContextConfiguration(locations = "classpath:/spring/spring-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @Transactional
 public class CategoriaServiceTest extends AbstractionTest{
 
@@ -27,7 +30,7 @@ public class CategoriaServiceTest extends AbstractionTest{
         private CategoriaData categoriaData;
 	
 	@Test
-        public void shouldHaveZeroRecords(){
+        public void aaa1TheFirstTest(){
             long records = categoriaService.getQuantidadeCategorias();
             assertNotNull(records);
             assertEquals(records, 0);
