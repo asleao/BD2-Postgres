@@ -1,0 +1,171 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.springframework.data.examples</groupId>
+	<artifactId>spring-data-postgres-hello-worlds</artifactId>
+	<version>3.2.1.RELEASE</version>
+	<packaging>jar</packaging>
+
+	<name>BD2 - Postgres</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>		
+		<spring.version>4.0.7.RELEASE</spring.version>
+		<slf4j.version>1.7.5</slf4j.version>        
+                <junit.version>4.11</junit.version>
+	</properties>
+
+	
+	<dependencies> 
+             
+        <!--DataFactory-->   
+        <dependency>
+            <groupId>org.fluttercode.datafactory</groupId>
+            <artifactId>datafactory</artifactId>
+            <version>0.8</version>
+            <type>jar</type>
+        </dependency>    
+        <!--            Project Lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.14.4</version>
+            <scope>provided</scope>
+        </dependency>
+       
+        <!-- Hibernate implementation of the JSR-303 Bean Validation Spec API.
+            (SDN makes use of the javax.validation:validation-api dependency and
+            hibernate provides a concrete implementation -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.1.1.Final</version>
+        </dependency>
+
+        <!-- Logging Related dependencies -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <!--Spring-->    
+        <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+
+                <exclusions>
+                        <exclusion>
+                                <groupId>commons-logging</groupId>
+                                <artifactId>commons-logging</artifactId>
+                        </exclusion>
+                </exclusions>
+        </dependency>
+
+        
+        <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                        <exclusion>
+                                <groupId>commons-logging</groupId>
+                                <artifactId>commons-logging</artifactId>
+                        </exclusion>
+                </exclusions>
+        </dependency>
+        
+
+        <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring.version}</version>
+
+                <exclusions>
+                        <exclusion>
+                                <groupId>commons-logging</groupId>
+                                <artifactId>commons-logging</artifactId>
+                        </exclusion>
+                </exclusions>
+        </dependency>
+
+        <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+
+                <exclusions>
+                        <exclusion>
+                                <groupId>commons-logging</groupId>
+                                <artifactId>commons-logging</artifactId>
+                        </exclusion>
+                </exclusions>
+        </dependency>
+
+        <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-jpa</artifactId>
+                <version>1.3.1.RELEASE</version>
+                <exclusions>
+                        <exclusion>
+                                <groupId>commons-logging</groupId>
+                                <artifactId>commons-logging</artifactId>
+                        </exclusion>
+                </exclusions>
+        </dependency>       
+        <!-- TEST dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+       
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+	 <dependency>
+	  <groupId>org.hibernate.javax.persistence</groupId>
+	  <artifactId>hibernate-jpa-2.1-api</artifactId>
+	  <version>1.0.0.Final</version>
+	  <type>jar</type>
+	 </dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<!-- Must use java 1.5 or higher for annotations -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
