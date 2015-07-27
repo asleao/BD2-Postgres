@@ -8,6 +8,7 @@ import sr.ifes.edu.br.bd2.domain.Categoria;
 import sr.ifes.edu.br.bd2.repositories.CategoriaRepository;
 
 @Service
+@Transactional
 public class CategoriaService {
 	
 	@Autowired
