@@ -44,4 +44,8 @@ public class Cliente extends Model{
     public String toString() {
         return "Cliente{" + "id:" + this.getId() + ", nome:" + nome + ", dataNascimento:" + dataNascimento + ", sexo:" + sexo + '}';
     }
+    
+    Cliente(long id){
+        this.setId(id);
+    }
 }

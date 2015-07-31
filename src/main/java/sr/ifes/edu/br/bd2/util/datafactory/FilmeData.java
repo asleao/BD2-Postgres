@@ -9,6 +9,7 @@ import java.util.Date;
 import org.fluttercode.datafactory.impl.DataFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sr.ifes.edu.br.bd2.CategoriaService;
 import sr.ifes.edu.br.bd2.domain.Filme;
 
 /**
@@ -20,15 +21,18 @@ public class FilmeData {
     
     @Autowired
     private CategoriaData categoriaData;
+    @Autowired
+    private CategoriaService categoriaService;
     
     public Filme build(DataFactory df){
         
         Filme filme = new Filme();
         filme.setNome("Filme "+df.getRandomWord());
         filme.setPreco(new Double(df.getNumberBetween(2, 70)));
-        filme.setCategoria(categoriaData.criarCategoria(df));
+        filme.setCategoria(categoriaService.obter(df.getItem(categoriaService.obterListaDeIds())));        
         filme.setDataCompra(df.getDateBetween(df.getDate(1960, 1, 1),
                                               new Date()));
+        filme.setPaisOrigem(new Long(df.getNumberBetween(1, 10)));
         return filme;
     }
     

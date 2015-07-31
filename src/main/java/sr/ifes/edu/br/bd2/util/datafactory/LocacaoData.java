@@ -6,9 +6,12 @@
 package sr.ifes.edu.br.bd2.util.datafactory;
 
 import java.util.Date;
+import java.util.List;
 import org.fluttercode.datafactory.impl.DataFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sr.ifes.edu.br.bd2.ClienteService;
+import sr.ifes.edu.br.bd2.FilmeService;
 import sr.ifes.edu.br.bd2.domain.Locacao;
 
 /**
@@ -20,6 +23,12 @@ public class LocacaoData {
        
     @Autowired
     private ClienteData clienteData;
+    
+    @Autowired
+    private ClienteService clienteService;
+    
+    @Autowired
+    private FilmeService filmeService;
     
     @Autowired
     private FilmeData filmeData;
@@ -35,8 +44,9 @@ public class LocacaoData {
         dataDevolucao.setDate(locacao.getDataLocacao().getDate()+ diasAmais);
         locacao.setDataDevolucao(dataDevolucao);
         
-        locacao.setCliente(clienteData.build(df));
-        locacao.setFilme(filmeData.build(df));
+        List<Long> clientes = clienteService.obterListaDeIds();
+        locacao.setCliente(clienteService.obter(df.getItem(clientes).intValue()));
+        locacao.setFilme(filmeService.obter(df.getItem(filmeService.obterListaDeIds())));
         
         if(diasAmais > 5){
             locacao.setMulta(new Double(((diasAmais-5)*2)));

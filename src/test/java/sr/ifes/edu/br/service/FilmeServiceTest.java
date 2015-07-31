@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.*;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import sr.ifes.edu.br.bd2.CategoriaService;
 import sr.ifes.edu.br.bd2.FilmeService;
@@ -42,7 +43,6 @@ public class FilmeServiceTest extends AbstractionTest{
         public void aaa1TheFirstTest(){
             long records = filmeService.getQuantidadeFilmes();
             assertNotNull(records);
-            assertEquals(records, 0);
         }
         
         @Test
@@ -73,8 +73,18 @@ public class FilmeServiceTest extends AbstractionTest{
         }
         
         @Test
+        @Rollback(false)
         public void shouldInsertTenThousandFilms(){
             int qtd = 10000;
+            int qtdSaved = new Long(filmeService.getQuantidadeFilmes()).intValue();
+            
+            if(qtdSaved >= qtd){
+                assertTrue(true);
+                return;
+            }else{
+                qtd = qtd - qtdSaved;
+            }
+            
             List<Filme> expected = new ArrayList<>();
             for (int i = 0; i < qtd; i++) {
                 expected.add(filmeService.criar(filmeData.build(df)));

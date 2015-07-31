@@ -38,6 +38,9 @@ public class Filme extends Model{
     
     @OneToOne
     private Categoria categoria;
+    
+    @Column
+    private Long paisOrigem;
 
     @Override
     public String toString() {

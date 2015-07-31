@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.*;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import sr.ifes.edu.br.bd2.ClienteService;
 import sr.ifes.edu.br.bd2.domain.Cliente;
@@ -39,7 +40,6 @@ public class ClienteServiceTest extends AbstractionTest{
         public void aaa1TheFirstTest(){
             long records = clienteService.getQuantidadeClientes();
             assertNotNull(records);
-            assertEquals(records, 0);
         }
         
         @Test
@@ -65,14 +65,30 @@ public class ClienteServiceTest extends AbstractionTest{
         }
         
         @Test
+        @Rollback(false)
         public void shoudInsertTenThousandOfClients(){
             int qtd = 10000;
+            int qtdSaved = new Long(clienteService.getQuantidadeClientes()).intValue();
+            
+            if(qtdSaved >= qtd){
+                assertTrue(true);
+                return;
+            }else{
+                qtd = qtd - qtdSaved;
+            }
+            
             List<Cliente> expected = new ArrayList<>();
             for (int i = 0; i < qtd; i++) {
                 expected.add(clienteService.criar(clienteData.build(df)));
             }
             assertNotNull(expected);
             assertEquals(expected.size(), qtd);
+        }
+        
+        @Test
+        public void shoudHaveALongListOfLongs(){
+            List<Long> ids = clienteService.obterListaDeIds();
+            assertTrue(ids.size() > 0);
         }
 	
 }
