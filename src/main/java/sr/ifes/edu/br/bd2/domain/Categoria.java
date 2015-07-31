@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Index;
 
 
 /**
@@ -27,6 +28,10 @@ public class Categoria extends Model{
     
     private static final long serialVersionUID = 1L;   
 
+    @Index(name = "index_id_categoria")
+    @Column(insertable = false, updatable = false)
+    private Long id;
+    
     @Column
     private String descricao;
     

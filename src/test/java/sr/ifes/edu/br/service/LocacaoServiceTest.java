@@ -1,8 +1,6 @@
 package sr.ifes.edu.br.service;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +16,7 @@ import sr.ifes.edu.br.bd2.CategoriaService;
 import sr.ifes.edu.br.bd2.ClienteService;
 import sr.ifes.edu.br.bd2.FilmeService;
 import sr.ifes.edu.br.bd2.LocacaoService;
-import sr.ifes.edu.br.bd2.domain.Categoria;
-import sr.ifes.edu.br.bd2.domain.Cliente;
-import sr.ifes.edu.br.bd2.domain.Filme;
 import sr.ifes.edu.br.bd2.domain.Locacao;
-import sr.ifes.edu.br.bd2.domain.Sexo;
 import sr.ifes.edu.br.bd2.util.datafactory.LocacaoData;
 
 @ContextConfiguration(locations = "classpath:/spring/spring-context.xml")
@@ -97,7 +91,7 @@ public class LocacaoServiceTest extends AbstractionTest{
         @Test
         @Rollback(false)
         public void shouldInsertHundredThousandRented(){
-            int qtd = 10000;
+            int qtd = 100000;
             
             int qtdSaved = new Long(locacaoService.getQuantidadeLocacoes()).intValue();
             
@@ -123,7 +117,7 @@ public class LocacaoServiceTest extends AbstractionTest{
                 }
             }
             
-            long sum = 0;
+            float sum = 0;
             for (float time : avgTime) {
                 sum += time;
             }

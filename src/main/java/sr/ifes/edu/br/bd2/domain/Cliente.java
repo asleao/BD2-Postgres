@@ -7,15 +7,13 @@ package sr.ifes.edu.br.bd2.domain;
 
 
 import java.util.Date;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
+import org.hibernate.annotations.Index;
 
 
 /**
@@ -32,6 +30,9 @@ public class Cliente extends Model{
     
     private static final long serialVersionUID = 1L;   
     
+    @Index(name = "index_id_cliente")
+    @Column(insertable = false, updatable = false)
+    private Long id;
     
     @Column
     private String nome;

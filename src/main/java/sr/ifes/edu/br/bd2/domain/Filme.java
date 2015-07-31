@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import org.hibernate.annotations.Index;
 
 /**
  *
@@ -26,6 +27,10 @@ import javax.persistence.OneToOne;
 public class Filme extends Model{
     
     private static final long serialVersionUID = 1L;    
+    
+    @Index(name = "index_id_filme")
+    @Column(insertable = false, updatable = false)
+    private Long id;
     
     @Column
     private String nome;

@@ -51,7 +51,7 @@ public class FilmeServiceTest extends AbstractionTest{
             f.setDataCompra(new Date());
             f.setNome("Divertidamente");
             f.setPreco(21.0);
-            Categoria c = new Categoria("Animação", 8.0);
+            Categoria c = new Categoria(null, "Animação", 8.0);
             c = categoriaService.criar(c);
             f.setCategoria(c);            
             filmeService.criar(f);
@@ -66,7 +66,7 @@ public class FilmeServiceTest extends AbstractionTest{
             f.setDataCompra(new Date());
             f.setNome("Divertidamente");
             f.setPreco(21.0);
-            Categoria c = new Categoria("Animação", 8.0);
+            Categoria c = new Categoria(null, "Animação", 8.0);
             f.setCategoria(c);
             Filme expected = filmeService.criar(f);
             assertNotNull(expected);

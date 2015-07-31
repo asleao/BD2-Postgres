@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Index;
 
 
 
@@ -27,8 +28,11 @@ import lombok.Setter;
 @Entity
 public class Locacao extends Model{
     
-    
     private static final long serialVersionUID = 1L;   
+    
+    @Index(name = "index_id_locacao")
+    @Column(insertable = false, updatable = false)
+    private Long id;
     
     @Column
     private Date dataLocacao;
