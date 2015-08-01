@@ -56,42 +56,36 @@ public class LocacaoServiceTest extends AbstractionTest{
             assertNotNull(records);
         }
         
-        @Test
-        public void shouldHaveAtLeastOneRecord(){
-            long records = locacaoService.getQuantidadeLocacoes();
-            assertNotNull(records);
-            assertTrue(records > 0);
-        }
         
-        @Test
-        public void shouldInsertTenThousandRented(){
-            int qtd = 10000;
-            
-            int qtdSaved = new Long(locacaoService.getQuantidadeLocacoes()).intValue();
-            
-            if(qtdSaved >= qtd){
-                assertTrue(true);
-                return;
-            }else{
-                qtd = qtd - qtdSaved;
-            }
-            
-            Locacao l;
-            int expected = 0;
-            for (int i = 0; i < qtd; i++) {
-                l = locacaoService.criar(locacaoData.build(df));
-                if(l != null){
-                    expected++;
-                }
-            }
-            
-            assertEquals(expected, qtd);
-        }
-        
+//        @Test
+//        public void shouldInsertTenThousandRented(){
+//            int qtd = 10000;
+//            
+//            int qtdSaved = new Long(locacaoService.getQuantidadeLocacoes()).intValue();
+//            
+//            if(qtdSaved >= qtd){
+//                assertTrue(true);
+//                return;
+//            }else{
+//                qtd = qtd - qtdSaved;
+//            }
+//            
+//            Locacao l;
+//            int expected = 0;
+//            for (int i = 0; i < qtd; i++) {
+//                l = locacaoService.criar(locacaoData.build(df));
+//                if(l != null){
+//                    expected++;
+//                }
+//            }
+//            
+//            assertEquals(expected, qtd);
+//        }
+//        
         @Test
         @Rollback(false)
         public void shouldInsertHundredThousandRented(){
-            int qtd = 100000;
+            int qtd = 10000;
             
             int qtdSaved = new Long(locacaoService.getQuantidadeLocacoes()).intValue();
             
@@ -127,4 +121,18 @@ public class LocacaoServiceTest extends AbstractionTest{
             
             assertEquals(expected, qtd);
         }
+        
+//        @Test
+//        public void lastTestToRun(){
+//            long lastId = locacaoService.getQuantidadeLocacoes();
+//            Locacao l = new Locacao();
+//            l.setId(lastId+1);
+//            int registroCopiado = df.getNumberBetween(1, new Long(lastId).intValue());
+//            Locacao replica = locacaoService.obter(new Long(registroCopiado));
+//            l.setFilme(replica.getFilme());
+//            l.setCliente(replica.getCliente());
+//            l.setDataLocacao(replica.getDataLocacao());
+//            l.setDataDevolucao(replica.getDataDevolucao());
+//            locacaoService.criar(l);
+//        }
 }

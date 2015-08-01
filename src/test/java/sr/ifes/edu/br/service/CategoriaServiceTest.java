@@ -30,32 +30,6 @@ public class CategoriaServiceTest extends AbstractionTest{
         @Autowired
         private CategoriaData categoriaData;
 	
-	@Test
-        public void aaa1TheFirstTest(){
-            long records = categoriaService.getQuantidadeCategorias();
-            assertNotNull(records);
-        }
-        
-        @Test
-        public void shouldHaveAtLeastOneRecord(){
-            Categoria c = new Categoria();
-            c.setDescricao("Categoria de Teste");
-            c.setPreco(2.3);
-            categoriaService.criar(c);
-            long records = categoriaService.getQuantidadeCategorias();
-            assertNotNull(records);
-            assertTrue(records > 0);
-        }
-        
-        @Test
-        public void shouldFindLastInsertion(){
-            Categoria c = new Categoria();
-            c.setDescricao("Categoria de Teste de Insercao");
-            c.setPreco(200.0);
-            Categoria actual = categoriaService.criar(c);
-            assertNotNull(actual);
-        }
-        
         @Test
         @Rollback(false)
         public void shouldInsertTenCategories(){

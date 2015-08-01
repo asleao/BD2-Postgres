@@ -32,38 +32,6 @@ public class ClienteServiceTest extends AbstractionTest{
         private ClienteData clienteData;
 	
 	        
-        /**
-         * Esse nome é uma gambiarra necessária para estabelecer uma ordem na execução dos testes
-         * Já que o setUp do banco demora um pouco, o tempo do teste é alterado.
-         */
-	@Test
-        public void aaa1TheFirstTest(){
-            long records = clienteService.getQuantidadeClientes();
-            assertNotNull(records);
-        }
-        
-        @Test
-        public void shouldHaveAtLeastOneRecord(){
-            Cliente c = new Cliente();
-            c.setDataNascimento(new Date());
-            c.setNome("Moisés Omena");
-            c.setSexo(Sexo.MASCULINO);
-            clienteService.criar(c);
-            long records = clienteService.getQuantidadeClientes();
-            assertNotNull(records);
-            assertTrue(records > 0);
-        }
-        
-        @Test
-        public void shouldFindLastInsertion(){
-            Cliente c = new Cliente();
-            c.setDataNascimento(new Date());
-            c.setNome("Moisés Omena");
-            c.setSexo(Sexo.MASCULINO);
-            Cliente expected = clienteService.criar(c);
-            assertNotNull(expected);
-        }
-        
         @Test
         @Rollback(false)
         public void shoudInsertTenThousandOfClients(){
@@ -85,10 +53,4 @@ public class ClienteServiceTest extends AbstractionTest{
             assertEquals(expected.size(), qtd);
         }
         
-        @Test
-        public void shoudHaveALongListOfLongs(){
-            List<Long> ids = clienteService.obterListaDeIds();
-            assertTrue(ids.size() > 0);
-        }
-	
 }

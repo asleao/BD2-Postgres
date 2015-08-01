@@ -39,38 +39,6 @@ public class FilmeServiceTest extends AbstractionTest{
          * Esse nome é uma gambiarra necessária para estabelecer uma ordem na execução dos testes
          * Já que o setUp do banco demora um pouco, o tempo do teste é alterado.
          */
-	@Test
-        public void aaa1TheFirstTest(){
-            long records = filmeService.getQuantidadeFilmes();
-            assertNotNull(records);
-        }
-        
-        @Test
-        public void shouldHaveAtLeastOneRecord(){
-            Filme f = new Filme();
-            f.setDataCompra(new Date());
-            f.setNome("Divertidamente");
-            f.setPreco(21.0);
-            Categoria c = new Categoria(null, "Animação", 8.0);
-            c = categoriaService.criar(c);
-            f.setCategoria(c);            
-            filmeService.criar(f);
-            long records = filmeService.getQuantidadeFilmes();
-            assertNotNull(records);
-            assertTrue(records > 0);
-        }
-        
-        @Test
-        public void shouldFindLastInsertion(){
-            Filme f = new Filme();
-            f.setDataCompra(new Date());
-            f.setNome("Divertidamente");
-            f.setPreco(21.0);
-            Categoria c = new Categoria(null, "Animação", 8.0);
-            f.setCategoria(c);
-            Filme expected = filmeService.criar(f);
-            assertNotNull(expected);
-        }
         
         @Test
         @Rollback(false)

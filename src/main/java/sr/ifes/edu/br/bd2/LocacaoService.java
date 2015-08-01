@@ -20,4 +20,8 @@ public class LocacaoService {
         public Locacao criar(Locacao locacao){
             return locacaoRepository.save(locacao);
         }
+        
+        public Locacao obter(Long id){
+            return locacaoRepository.findOne(id);
+        }
 }
