@@ -1,6 +1,7 @@
 package sr.ifes.edu.br.service;
 
 import java.util.Date;
+import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +86,7 @@ public class LocacaoServiceTest extends AbstractionTest{
         @Test
         @Rollback(false)
         public void shouldInsertHundredThousandRented(){
-            int qtd = 10000;
+            int qtd = 100000;
             
             int qtdSaved = new Long(locacaoService.getQuantidadeLocacoes()).intValue();
             
@@ -96,19 +97,20 @@ public class LocacaoServiceTest extends AbstractionTest{
                 qtd = qtd - qtdSaved;
             }
             
-            Locacao l;
             int expected = 0;
             float avgTime[] = new float[qtd];
             Date initTime = new Date();
+            
+            List<Long> clienteIds = clienteService.obterListaDeIds();
+            List<Long> filmeIds = filmeService.obterListaDeIds();
+            
             for (int i = 0; i < qtd; i++) {
                 Date insertTime = new Date();
-                l = locacaoService.criar(locacaoData.build(df));
+                locacaoService.criar(locacaoData.build(df, df.getItem(clienteIds), df.getItem(filmeIds)));
                 Date finishDate = new Date(new Date().getTime() - insertTime.getTime());
                 avgTime[i] = finishDate.getTime()/1000f;
                 System.out.println("Registro: "+i+" -  Inserido em: "+finishDate.getTime()/1000f+"s");
-                if(l != null){
-                    expected++;
-                }
+                expected++;
             }
             
             float sum = 0;
