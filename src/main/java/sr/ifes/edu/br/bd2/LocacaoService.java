@@ -24,4 +24,8 @@ public class LocacaoService {
         public Locacao obter(Long id){
             return locacaoRepository.findOne(id);
         }
+        
+        public void inserirNativamente(Long clienteId, Long filmeId){
+            locacaoRepository.insertNativo(clienteId, filmeId);
+        }
 }

@@ -23,8 +23,8 @@ public class ClienteService {
             return clienteRepository.save(cliente);
         }
         
-        public Cliente obter(int id){
-            return clienteRepository.findOne(new Long(id));
+        public Cliente obter(Long id){
+            return clienteRepository.findOne(id);
         }
         
         public List<Long> obterListaDeIds(){
