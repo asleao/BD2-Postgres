@@ -1,4 +1,4 @@
-﻿/*
+/*
 SELECT cli.id, cli.nome, count(cli.id)  AS filmes_estrangeiros_locados
 FROM cliente cli 
 JOIN locacao loc 
@@ -30,8 +30,8 @@ inner JOIN filme f
 on (l.filme_id = f.id)
 inner JOIN categoria ct
 on (ct.id = f.categoria_id)
-where ct.id in (18,19) 
-AND sexo = '1'
+where ct.id in (1,2) 
+AND c.sexo = '1'
 */
 
 /*
@@ -42,7 +42,7 @@ inner JOIN filme f
 on (l.filme_id = f.id)
 inner JOIN categoria ct
 on (ct.id = f.categoria_id)
-where ct.id in (18,19) 
+where ct.id in (1,2) 
 AND sexo =  '1'
 */
 
@@ -63,3 +63,18 @@ where ct.id in (
 	) 
 AND sexo =  '1'
 */
+
+--Custom
+--Locacoes com clientes que locaram filmes com a categoria contendo a letra A
+-- Campo String indexado
+SELECT * FROM locacao l 
+WHERE cliente_id IN (
+	SELECT c.id FROM cliente c
+	INNER JOIN locacao loc
+	ON (loc.cliente_id = c.id)
+	INNER JOIN filme f
+	ON (loc.filme_id = f.id)
+	INNER JOIN categoria cat
+	ON (f.categoria_id = cat.id)
+	WHERE cat.descricao LIKE '%a%'
+)
