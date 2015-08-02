@@ -78,3 +78,9 @@ WHERE cliente_id IN (
 	ON (f.categoria_id = cat.id)
 	WHERE cat.descricao LIKE '%a%'
 )
+
+-- Todas as decrições de todos os filmes
+SELECT c.descricao
+FROM locacao l 
+INNER JOIN filme f ON (l.filme_id = f.id)
+INNER JOIN categoria c ON (f.categoria_id = c.id)
